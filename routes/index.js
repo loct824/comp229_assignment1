@@ -15,6 +15,13 @@ router.get('/aboutme', function(req, res, next) {
     res.render('aboutme', { title: 'About' });
   });
 
+/* GET resume */
+router.get('/resume', function(req, res, next){
+    res.download('./public/content/Ivan_Lo_resume.pdf', function(err){
+        console.log("Error:",err);
+    })
+});
+
 /* GET Projects page. */
 router.get('/projects', function(req, res, next) {
     res.render('projects', { title: 'Projects' });
@@ -29,6 +36,5 @@ router.get('/services', function(req, res, next) {
 router.get('/contact', function(req, res, next) {
     res.render('contact', { title: 'Contact' });
   });
-
 
 module.exports = router;
