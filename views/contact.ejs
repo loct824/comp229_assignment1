@@ -1,0 +1,67 @@
+<%include partials/header.ejs %>
+<%include partials/main_nav.ejs %>
+<div class="contactInfo" style="width: 30rem;margin-bottom: 50px;">
+    <div class="card-body">
+      <h5 class="card-title" style="margin-bottom: 20px;">Contact Info</h5>
+      <p class="card-text">Feel free to contact me via below channels.</p>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Channels</th>
+            <th scope="col">Details</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Email</th>
+            <td>ivanlo@noserviceprovider.com</td>
+
+          </tr>
+          <tr>
+            <th scope="row">Mobile</th>
+            <td>+1 123-321-1234</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <p style="width: 80rem;">You can also leave your message and contact details via the form below.
+        I will check the messages regularly.</p>
+    <h5>Message Form:</h5>
+    <form>
+        <div id="container" style="display:flex;">
+            <div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" style="width: 330px;">Email address</label>
+                    <input type="email" class="form-control" id="inputEmail" style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Phone number</label>
+                    <input type="phone" class="form-control" id="inputPhone" style="width: 300px;">
+                </div>
+                <button type="submit" class="btn btn-primary" onClick="submitClick()"
+                id="btnContactSubmit">Submit</button>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Message</label>
+                <textarea type="text" class="form-control" id="inputMessage" style="width: 600px;height: 300px;"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    submitClick = ()=>{
+        let phone = document.getElementById("inputPhone").value;
+        let email = document.getElementById("inputEmail").value;
+        let message = document.getElementById("inputMessage").value;
+        alert("email:"+email+"\nphone:"+phone+"\nmessage:"+message);
+        alert("message received.");
+    }
+</script>
+
+<%include partials/bottom_nav.ejs %>
+<%include partials/footer.ejs %>
