@@ -35,18 +35,22 @@
         <div id="container" style="display:flex;">
             <div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label" style="width: 330px;">Email address</label>
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" id="inputName" style="width: 300px;">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" style="width: 330px;">Email address</label>
                     <input type="email" class="form-control" id="inputEmail" style="width: 300px;">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Phone number</label>
+                    <label class="form-label">Phone number</label>
                     <input type="phone" class="form-control" id="inputPhone" style="width: 300px;">
                 </div>
-                <button type="submit" class="btn btn-primary" onClick="submitClick()"
+                <button type="reset" class="btn btn-primary" onClick="submitClick()"
                 id="btnContactSubmit">Submit</button>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Message</label>
+                <label class="form-label">Message</label>
                 <textarea type="text" class="form-control" id="inputMessage" style="width: 600px;height: 300px;"></textarea>
             </div>
         </div>
@@ -55,11 +59,13 @@
 
 <script>
     submitClick = ()=>{
+        let name = document.getElementById("inputName").value;
         let phone = document.getElementById("inputPhone").value;
         let email = document.getElementById("inputEmail").value;
         let message = document.getElementById("inputMessage").value;
-        alert("email:"+email+"\nphone:"+phone+"\nmessage:"+message);
+        alert("name:"+name+"\nemail:"+email+"\nphone:"+phone+"\nmessage:"+message);
         alert("message received.");
+        window.location.href = '../';
     }
 </script>
 
