@@ -40,6 +40,10 @@ app.use(session(
         }
     }));
 
+// Flash messages
+const flash = require('connect-flash');
+app.use(flash());
+
 
 // Passport authentication
 require('./passport.js');
@@ -57,7 +61,15 @@ isAuthenticated = (req,res,next)=>{
 app.use(isAuthenticated);
 
 
+// Routes
+let indexRouter = require('../routes/index');
 app.use('/', indexRouter);
+
+let authRouter = require('../routes/auth.js');
+app.use('/auth',authRouter);
+
+let businessRouter = require('../routes/business.js');
+app.use('/business',businessRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
