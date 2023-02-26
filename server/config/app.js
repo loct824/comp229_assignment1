@@ -6,6 +6,12 @@ let logger = require('morgan');
 
 let indexRouter = require('../routes/index');
 
+// database setup
+let mongoose = require('mongoose');
+
+// gives access to variables set in the .env file via `process.env.VARIABLE_NAME`
+require('dotenv').config();
+
 let app = express();
 
 // view engine setup
