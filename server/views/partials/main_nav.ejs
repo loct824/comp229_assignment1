@@ -4,7 +4,8 @@
       <div class="me-auto">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active">Ivan Lo</a>
+                <a class="nav-link active">Ivan Lo<%= username ? ' (' + username +')' : '' %></a>
+
             </li>
         </ul>
       </div>
@@ -28,6 +29,27 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/contact"><i class="fa-regular fa-address-card"></i></i>Contact</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/business">
+                    <i class="fa-solid fa-briefcase"></i>Business
+                </a>
+            </li>
+            <% if (isAuthenticated) {%>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/auth/logout">
+                        <i class="fa-solid fa-right-to-bracket"></i>Logout
+                    </a>
+                    <!-- <form method="POST" action="/auth/logout">
+                        <button><i class="fa-solid fa-right-to-bracket"></i>Logout</button>
+                    </form> -->
+                </li>
+            <%}else{%>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/auth/login">
+                        <i class="fa-solid fa-right-to-bracket"></i>Login
+                    </a>
+                </li>
+            <%}%>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li> -->
