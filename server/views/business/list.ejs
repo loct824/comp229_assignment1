@@ -1,0 +1,34 @@
+<%include ../partials/header.ejs%>
+    <%include ../partials/main_nav.ejs%>
+    <main class="container">
+        <div class="row">
+            <div class="offset-md-1 col-md-10">
+                <h1><%= title%></h1>
+                <a href="/business/add" class="btn btn-primary" role="button"><i class = "fas fa-plus-circle"></i>Add Contact</a>
+                <br>
+                <table class="table table-bordered table-striped table-hover">
+                    <!-- header row -->
+                    <tr>
+                        <th class="text-center col-2">Name</th>
+                        <th class="text-center col-2">Phone number</th>
+                        <th class="text-center col-1">Email</th>
+                    </tr>
+                    <% for(let count=0;count<businessContactsList.length;count++){ %>
+                        <tr>
+                            <td class="text-center"><%= businessContactsList[count].name %></td>
+                            <td class="text-center"><%= businessContactsList[count].phone %></td>
+                            <td class="text-center"><%= businessContactsList[count].email %></td>
+                            <td class="text-center col-1"><a href="/business/edit/<%=businessContactsList[count]._id%>" class="btn btn-primary"><i class="fas fa-pencil alt"></i>Edit</a></td>
+                            <td class="text-center col-1"><a href="/business/delete/<%=businessContactsList[count]._id%>" class="btn btn-danger"><i class="fas fa-trash alt"></i>Delete</a></td>
+                        </tr>
+                    <%};%>
+                </table>
+            </div>
+        <!-- </div>
+        <div class="jumbotron">
+        <h1 class=""display-4">Welcome to the <%= title %> Page</h1>
+        </div> -->
+    </main>
+    <%include ../partials/bottom_nav.ejs%>
+<%include ../partials/footer.ejs%>
+    
