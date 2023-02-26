@@ -4,7 +4,9 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
-let indexRouter = require('../routes/index');
+// Authentication dependencies
+let session = require('express-session');
+const passport = require('passport');
 
 // database setup
 let mongoose = require('mongoose');
@@ -12,6 +14,8 @@ let mongoose = require('mongoose');
 // gives access to variables set in the .env file via `process.env.VARIABLE_NAME`
 require('dotenv').config();
 
+
+// express app
 let app = express();
 
 // view engine setup
@@ -24,6 +28,34 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
+
+// express session set-up
+app.use(session(
+    {
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 // 1000 milliseconds per second, 60 seconds per minute, 60 minutes per hour, 24 hours per day
+        }
+    }));
+
+
+// Passport authentication
+require('./passport.js');
+app.use(passport.initialize());
+app.use(passport.session());
+
+// for checking if the user is authenticated in ejs view templates
+
+isAuthenticated = (req,res,next)=>{
+    res.locals.isAuthenticated = req.isAuthenticated();
+    res.locals.username = req.user ? req.user.username : null;
+    next();
+}
+
+app.use(isAuthenticated);
+
 
 app.use('/', indexRouter);
 
